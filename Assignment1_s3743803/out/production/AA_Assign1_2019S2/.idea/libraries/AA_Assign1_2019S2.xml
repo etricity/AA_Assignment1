@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="AA_Assign1_2019S2">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/sample.jar!/" />
+      <root url="jar://$PROJECT_DIR$/jopt-simple-5.0.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
