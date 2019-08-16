@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="904df3b7-8766-42e6-887c-d3289b8c3593" name="Default Changelist" comment="" />
+    <list default="true" id="904df3b7-8766-42e6-887c-d3289b8c3593" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/AA_Assign1_2019S2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AA_Assign1_2019S2/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../text.txt" beforeDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,17 +44,20 @@
     <session id="1003327812">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="6" />
-          <entry key="project.open.time.1" value="1" />
+          <entry key="project.closed" value="12" />
+          <entry key="project.open.time.1" value="3" />
+          <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.11" value="1" />
+          <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.8" value="3" />
-          <entry key="project.opened" value="6" />
+          <entry key="project.open.time.9" value="2" />
+          <entry key="project.opened" value="12" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="5622" />
+          <entry key="JAVA" value="5624" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -65,8 +72,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SequentialRepresentation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="810">
-              <caret line="56" column="55" selection-start-line="56" selection-start-column="53" selection-end-line="56" selection-end-column="55" />
+            <state relative-caret-position="2160">
+              <caret line="146" column="45" selection-start-line="146" selection-start-column="45" selection-end-line="146" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -83,8 +90,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/LinkedRepresentation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="402">
-              <caret line="180" column="20" selection-start-line="180" selection-start-column="20" selection-end-line="180" selection-end-column="20" />
+            <state relative-caret-position="345">
+              <caret line="23" column="5" lean-forward="true" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -92,8 +99,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TreeTester.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3585">
-              <caret line="244" selection-start-line="244" selection-end-line="244" />
+            <state relative-caret-position="2580">
+              <caret line="177" column="9" selection-start-line="177" selection-start-column="9" selection-end-line="177" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -124,11 +131,14 @@
       <find>==</find>
     </findStrings>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/SequentialRepresentation.java" />
         <option value="$PROJECT_DIR$/LinkedRepresentation.java" />
+        <option value="$PROJECT_DIR$/SequentialRepresentation.java" />
       </list>
     </option>
   </component>
@@ -142,23 +152,24 @@
     <option name="width" value="1680" />
     <option name="height" value="1050" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="AA_Assign1_2019S2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AA_Assign1_2019S2" type="462c0819:PsiDirectoryNode" />
+              <item name="Assignment1_s3743803" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Assignment1_s3743803" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -222,17 +233,22 @@
       <workItem from="1565606159073" duration="52000" />
       <workItem from="1565606233539" duration="12598000" />
       <workItem from="1565742962388" duration="18000" />
+      <workItem from="1565745629225" duration="442000" />
+      <workItem from="1565756902339" duration="284000" />
+      <workItem from="1565822030347" duration="6000" />
+      <workItem from="1565918061399" duration="237000" />
+      <workItem from="1565918615579" duration="286000" />
+      <workItem from="1565918947557" duration="1000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34830000" />
+    <option name="totallyTimeSpent" value="36086000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13553114" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14285715" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -306,8 +322,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/SequentialRepresentation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="810">
-          <caret line="56" column="55" selection-start-line="56" selection-start-column="53" selection-end-line="56" selection-end-column="55" />
+        <state relative-caret-position="2160">
+          <caret line="146" column="45" selection-start-line="146" selection-start-column="45" selection-end-line="146" selection-end-column="45" />
         </state>
       </provider>
     </entry>
@@ -320,8 +336,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TreeTester.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3585">
-          <caret line="244" selection-start-line="244" selection-end-line="244" />
+        <state relative-caret-position="2580">
+          <caret line="177" column="9" selection-start-line="177" selection-start-column="9" selection-end-line="177" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -337,8 +353,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/LinkedRepresentation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="402">
-          <caret line="180" column="20" selection-start-line="180" selection-start-column="20" selection-end-line="180" selection-end-column="20" />
+        <state relative-caret-position="345">
+          <caret line="23" column="5" lean-forward="true" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
         </state>
       </provider>
     </entry>

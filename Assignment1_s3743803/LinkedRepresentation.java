@@ -14,10 +14,11 @@ public class LinkedRepresentation<T> implements BSPTree<T> {
 
     public class LNode<T> extends Object {
         private T nodeLabel;
-        private LNode<T> left, right;
+        private LNode<T> left, right, parent;
 
         public LNode(T nodeLabel){
             this.nodeLabel = nodeLabel;
+            parent = null;
             left = null;
             right = null;
         }
@@ -58,7 +59,10 @@ public class LinkedRepresentation<T> implements BSPTree<T> {
             if(parentNode.left == null && parentNode.right == null)
             {
                 parentNode.left = new LNode<T>(leftChild);
+                parentNode.left.parent = parentNode;
                 parentNode.right = new LNode<>(rightChild);
+                parentNode.right.parent = parentNode;
+
             }
             else
             {
@@ -88,8 +92,29 @@ public class LinkedRepresentation<T> implements BSPTree<T> {
     @Override
     public String findParent(T nodeLabel) {
 
-        findParent(nodeLabel, root);
-        return null;
+        String output = "";
+        LNode<T> child = getNode(nodeLabel, root);
+        LNode<T> parent;
+
+        if(child != null)
+        {
+            parent = child.parent;
+            if(parent!= null)
+            {
+                output = child.nodeLabel + " " + parent.nodeLabel;
+            }
+            else
+            {
+                output = "No Parent Node exists";
+            }
+        }
+        else
+        {
+            output = "Node does not exists";
+        }
+
+
+        return output;
     } // end of findParent
 
     @Override
