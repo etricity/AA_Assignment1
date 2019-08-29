@@ -209,7 +209,6 @@ public class TreeTester {
                 return;
         }
 
-
         // if file specified, then load file
         if (inputFilename != null) {
             try (BufferedReader reader = new BufferedReader(new FileReader(inputFilename))) {
@@ -240,7 +239,7 @@ public class TreeTester {
                 System.err.println(ex.getMessage());
             }
         }
-
+            System.out.println("Ready");
         // construct in and output streams/writers/readers, then process each operation.
         try (BufferedReader inReader = new BufferedReader(new InputStreamReader(System.in))) {
             // output to writer

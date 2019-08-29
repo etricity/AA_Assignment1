@@ -11,23 +11,22 @@ import java.io.PrintWriter;
  */
 public class SequentialRepresentation<T> implements BSPTree<T> {
 
-    private class Node<T> extends Object {
-        private T nodeLabel;
+    /*Data structure used to hold all nodes in the tree
 
-        public Node(T nodeLabel){
-            this.nodeLabel = nodeLabel;
-        }
-    }
+    Sturcture --> parentNode = binaryTreeArray[index]
+                  leftChild =  binaryTreeArray[(2 * parentIndex) + 1]
+                  rightChild =  binaryTreeArray[(2 * parentIndex) + 2]
 
+     */
     private Node<T>[] binaryTreeArray;
-
     //This only exists to make it easier to increase size of array if needed
     private int noNodes;
+
     /**
      * Constructs empty graph.
      */
     public SequentialRepresentation() {
-        binaryTreeArray = new Node[99];
+        binaryTreeArray = new Node[100];
         noNodes = 0;
 
 
@@ -49,17 +48,25 @@ public class SequentialRepresentation<T> implements BSPTree<T> {
 
     @Override
     public void splitNode(T srcLabel, T leftChild, T rightChild) {
-        //TODO is there a better way to insert nodes 
-        if(findNode(srcLabel))
-        {
-           int parentIndex = getIndex(srcLabel);
 
-           if(binaryTreeArray[(2 * parentIndex) + 1] == null && binaryTreeArray[(2 * parentIndex) + 2] == null)
+        int parentIndex = getIndex(srcLabel);
+
+        //Doubles array if, using the current array, you would no longer be able to not access the rightmost childIndex for the new rightChild
+        int numToTest = 2*((2 *parentIndex)+ 2) + 2 + 1;
+        if(numToTest > binaryTreeArray.length)
+        {
+           binaryTreeArray = doubleArray(binaryTreeArray, numToTest);
+        }
+
+        //IF the node exists in the Tree
+        if(parentIndex >= 0)
+        {
+           //IF Node has no children
+           if(binaryTreeArray[(2 * parentIndex) + 1] == null || binaryTreeArray[(2 * parentIndex) + 2] == null)
            {
-               if(noNodes >= binaryTreeArray.length - 1)
-               {
-                   binaryTreeArray = doubleArray(binaryTreeArray);
-               }
+               //This statement ensures that if the new children are added to the current array, you can still access the index of its right-most child
+               //Ensures no ArrayOutOfIndexException is throw when transvering through the tree
+
                Node<T> leftC = new Node<>(leftChild);
                Node<T> rightC = new Node<>(rightChild);
                binaryTreeArray[(2 * parentIndex) + 1] = leftC;
@@ -78,6 +85,10 @@ public class SequentialRepresentation<T> implements BSPTree<T> {
 
     } // end of splitNode
 
+    /*
+        I don't practically use this method, instead it calls getIndex() which does most of the work
+        *** SEE getIndex()
+     */
     @Override
     public boolean findNode(T nodeLabel) {
         boolean found = false;
@@ -89,6 +100,11 @@ public class SequentialRepresentation<T> implements BSPTree<T> {
         return found;
     } // end of findNode
 
+    /*
+    CHECKS if the child exists in the tree
+    CHECKS if the child is a left or right child
+    FINDS parent for given node
+     */
     @Override
     public String findParent(T nodeLabel) {
 
@@ -99,11 +115,11 @@ public class SequentialRepresentation<T> implements BSPTree<T> {
         //IF CHILD EXISTS
         if(childIndex > 0)
         {
-            //LEFT CHILD
+            //child is LEFT CHILD
             if(childIndex % 2 == 1)
             {
                 parentNode = binaryTreeArray[(childIndex - 1) / 2];
-            //RIGHT CHILD
+            //child is RIGHT CHILD
             } else{
                 parentNode = binaryTreeArray[(childIndex - 2) / 2];
             }
@@ -114,6 +130,10 @@ public class SequentialRepresentation<T> implements BSPTree<T> {
         return output;
     } // end of findParent
 
+    /*
+    CHECKS if parent exists
+    FINDS children nodes --> binaryTreeArray[(2 * parentIndex) + 1] && binaryTreeArray[(2 * parentIndex) + 2]
+     */
     @Override
     public String findChildren(T nodeLabel) {
         String output = "";
@@ -142,24 +162,31 @@ public class SequentialRepresentation<T> implements BSPTree<T> {
         return output;
     } // end of findParent
 
+    /*
+    The transversal methods provided simply call my transveral methods below
+    My methods provide a parameter to the root node
+     */
     @Override
     public void printInPreorder(PrintWriter writer) {
         preOrder(writer, binaryTreeArray, 0);
-
+        writer.println();
     } // end of printInPreorder
 
     @Override
     public void printInInorder(PrintWriter writer) {
         inOrder(writer, binaryTreeArray, 0);
+        writer.println();
     } // end of printInInorder
 
     @Override
     public void printInPostorder(PrintWriter writer) {
         postOrder(writer, binaryTreeArray, 0);
+        writer.println();
     } // end of printInPostorder
 
     /*
     * Returns the index of a node in the array binaryTreeArray.
+    * Returns -1 if node does not exist in binaryTreeArray
     * @param nodeLabel   the node to get the index of.
      */
     public int getIndex(T nodeLabel)
@@ -182,7 +209,8 @@ public class SequentialRepresentation<T> implements BSPTree<T> {
             }
         }
 
-        //returns an invalid index if the element is not in the array
+        //IF reached end of the array (node is not in the array)
+        //return -1
         if(i == binaryTreeArray.length)
         {
             i = -1;
@@ -190,7 +218,7 @@ public class SequentialRepresentation<T> implements BSPTree<T> {
         return i;
     }
 
-    //Prints the array (Test Purposes only) TODO DELETE FOR SUBMISSION
+    //Prints the array by index (Test Purposes only) TODO DELETE FOR SUBMISSION
     public void printArray()
     {
         for(int i = 0; i < noNodes; i++)
@@ -201,67 +229,113 @@ public class SequentialRepresentation<T> implements BSPTree<T> {
 
     /*
     * Duplicates array passed in with a double the size + 1
+    * Called when attempting to add children to a full array
     * @param BTArray    the array to be enlarged
      */
-    public Node<T>[] doubleArray(Node<T>[] BTArray)
+    public Node<T>[] doubleArray(Node<T>[] BTArray, int numToTest)
     {
-        Node<T>[] doubledArray = new Node[(noNodes * 2) + 1];
+        Node<T>[] doubledArray = new Node[2 * (numToTest)];
 
-        for(int i = 0; i < noNodes; i++)
+        for(int i = 0; i < BTArray.length; i++)
         {
             doubledArray[i] = BTArray[i];
         }
-
         return doubledArray;
     }
 
     /*
-    * the actually implementation of preOrder Transversal
+    * My Transversal methods (preOrder, inOrder, postOrder)
     * @param    root node
      */
 
 
     public void preOrder(PrintWriter writer, Node<T>[] BTArray, int root)
     {
-        writer.println(BTArray[root].nodeLabel);
-        if(BTArray[(2 * root) + 1] != null)
+        if(BTArray[root] == null)
         {
-            preOrder(writer, BTArray,  2* root +1);
+            return;
         }
-        if(BTArray[(2 * root) + 2] != null)
+
+        try {
+            writer.print(BTArray[root].nodeLabel + " ");
+            if(BTArray[(2 * root) + 1] != null)
+            {
+                preOrder(writer, BTArray,  2* root +1);
+            }
+            if(BTArray[(2 * root) + 2] != null)
+            {
+                preOrder(writer, BTArray,  2* root +2);
+            }
+        } catch(ArrayIndexOutOfBoundsException e)
         {
-            preOrder(writer, BTArray,  2* root +2);
+            return;
         }
+        writer.flush();
     }
 
     public void inOrder(PrintWriter writer, Node<T>[] BTArray, int root)
     {
 
-        if(BTArray[(2 * root) + 1] != null)
+        if(BTArray[root] == null)
         {
-            inOrder(writer, BTArray,  2* root +1);
+            return;
         }
-        writer.println(BTArray[root].nodeLabel);
-        if(BTArray[(2 * root) + 2] != null)
+
+        try {
+
+            if(BTArray[(2 * root) + 1] != null)
+            {
+                inOrder(writer, BTArray,  2* root +1);
+            }
+            writer.print(BTArray[root].nodeLabel + " ");
+            if(BTArray[(2 * root) + 2] != null)
+            {
+                inOrder(writer, BTArray,  2* root +2);
+            }
+        } catch(ArrayIndexOutOfBoundsException e)
         {
-            inOrder(writer, BTArray,  2* root +2);
+            return;
         }
+        writer.flush();
     }
 
     public void postOrder(PrintWriter writer, Node<T>[] BTArray, int root)
     {
 
-        if(BTArray[(2 * root) + 1] != null)
+        if(BTArray[root] == null)
         {
-            postOrder(writer, BTArray,  2* root +1);
+            return;
         }
-        if(BTArray[(2 * root) + 2] != null)
+
+        try {
+
+            if(BTArray[(2 * root) + 1] != null)
+            {
+                postOrder(writer, BTArray,  2* root +1);
+            }
+
+            if(BTArray[(2 * root) + 2] != null)
+            {
+                postOrder(writer, BTArray,  2* root +2);
+            }
+            writer.print(BTArray[root].nodeLabel + " ");
+        } catch(ArrayIndexOutOfBoundsException e)
         {
-            postOrder(writer, BTArray,  2* root +2);
+            return;
         }
-        writer.println(BTArray[root].nodeLabel);
+        writer.flush();
     }
 
+    /* A single node represents a Tree Node
+     *  The constructor takes T Nodelabel as its "data"
+     */
+    private class Node<T> extends Object {
+        private T nodeLabel;
+
+        public Node(T nodeLabel){
+            this.nodeLabel = nodeLabel;
+        }
+    }
 
 
 } // end of class SequentialRepresentation
