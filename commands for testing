@@ -1,8 +1,0 @@
-**must be in directory of script**
-
-Example of command with BSP_combined.txt
-python assign1TestScript.py -v -f /home/sl3/S3743803/courses/aa/AA_Assignment/BSP_combined.txt /home/sl3/S3743803/courses/aa/AA_Assignment/Assignment1_s3743803 sample [test]
-
-
-Testing test1 (no BSP_combined.txt)
-python assign1TestScript.py -v /home/sl3/S3743803/courses/aa/AA_Assignment/Assignment1_s3743803 sample tests/test1.in
